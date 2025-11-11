@@ -1,0 +1,1094 @@
+:root {
+  --primary-color: #352f91;
+  --admin-primary-color: #4a5568;
+  --admin-primary-hover: #2d3748;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --light-gray-color: #f8f9fa;
+  --medium-gray-color: #e9ecef;
+  --dark-gray-color: #6c757d;
+  --text-color: #333;
+  --white-color: #fff;
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --border-radius: 8px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--light-gray-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+#root {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 95vh;
+}
+
+header {
+  background-color: var(--white-color);
+  padding: 1.5rem;
+  text-align: center;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 1.5rem;
+  border-top: 5px solid var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+header.admin-header {
+  border-top-color: var(--admin-primary-color);
+}
+
+/* =========================================================
+   #3 - NOVA ESTRUTURA DO CABEÇALHO PARA O LOGO
+   ========================================================= */
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.header-logo {
+    max-height: 40px; /* Ajuste a altura máxima do logo aqui */
+    width: auto;
+}
+
+header h1 {
+  color: #352f91;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin: 0;
+}
+header.admin-header h1 {
+  color: var(--admin-primary-color);
+}
+
+
+/* =========================================================
+   #1 - ATUALIZAÇÃO DOS BOTÕES VOLTAR/SAIR
+   ========================================================= */
+
+/* Voltar permanece no topo esquerdo; Logout não é absoluto mais */
+.header-back-button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    transform: none;
+}
+
+/* Removemos posicionamento absoluto do logout — quando usado em telas,
+   deve aparecer no fluxo (ex.: botão no final do dashboard). */
+.header-logout-button {
+    position: static;
+    margin: 0;
+    padding: 0;
+    /* Caso queira um espaçamento quando usado dentro de cards/dashboards: */
+    margin-top: 1rem;
+}
+
+
+
+main {
+  background-color: var(--white-color);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  flex-grow: 1;
+}
+
+.card {
+    background-color: var(--white-color);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.card-inset {
+    background-color: var(--light-gray-color);
+    border: 1px solid var(--medium-gray-color);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    margin-top: 1.5rem;
+}
+
+.button {
+  display: inline-block;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--white-color);
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+  margin-top: 0.5rem;
+}
+
+.button:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.button:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+.button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.button.admin-button {
+  background-color: var(--admin-primary-color);
+}
+.button.admin-button:hover:not(:disabled) {
+    background-color: var(--admin-primary-hover);
+}
+
+.button-secondary {
+    background-color: var(--dark-gray-color);
+}
+.button-secondary:hover:not(:disabled) {
+    background-color: #5a6268;
+}
+
+.button-success {
+    background-color: var(--success-color);
+}
+.button-success:hover:not(:disabled) {
+    background-color: #218838;
+}
+
+.button-danger {
+    background-color: var(--danger-color);
+}
+.button-danger:hover:not(:disabled) {
+    background-color: #c82333;
+}
+
+.button-sm {
+  width: auto;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+.text-danger {
+    color: var(--danger-color);
+    margin-bottom: 1rem;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    color: var(--text-color);
+}
+
+.loader-overlay .spinner {
+    width: 60px;
+    height: 60px;
+    border-width: 6px;
+}
+
+
+.spinner {
+  border: 4px solid var(--medium-gray-color);
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.photo-section {
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--medium-gray-color);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+}
+
+.photo-section h3 {
+  margin-bottom: 1rem;
+}
+
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 10px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.image-preview {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  border: 2px solid var(--medium-gray-color);
+  display: block;
+}
+
+.photo-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.camera-view {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.camera-view video, .camera-view canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.camera-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* =========================================================
+   #2 - ATUALIZAÇÃO DO BOTÃO DE CAPTURA DA CÂMERA
+   ========================================================= */
+#shutter-button {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 6px solid rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.1s ease;
+  padding: 0; /* Garante que não haja preenchimento interno */
+}
+
+#shutter-button:active {
+  transform: scale(0.95);
+}
+
+#shutter-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 45px;
+  height: 45px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.history-list, .location-list, .goal-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list-item {
+  border: 1px solid var(--medium-gray-color);
+  transition: background-color 0.2s;
+  padding: 1rem;
+  text-align: left;
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.list-item-info {
+    flex-grow: 1;
+}
+
+.history-list .list-item > div:first-child {
+  cursor: pointer;
+  flex-grow: 1;
+}
+.history-list .list-item:hover {
+    background-color: var(--light-gray-color);
+}
+
+.list-item-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex-shrink: 0;
+    margin-left: 1rem;
+    align-self: center;
+}
+
+.list-item p {
+    margin: 0.2rem 0;
+    font-size: 0.9rem;
+}
+.list-item p strong {
+    color: var(--text-color);
+}
+
+.list-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+.list-item-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.detail-view img {
+    width: 100%;
+    height: auto;
+    margin-top: 1rem;
+    border-radius: var(--border-radius);
+}
+
+.detail-section h3 {
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.form-container, .login-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-container input, .form-container select, .login-container input, input[type="search"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+}
+
+.coord-inputs {
+    display: flex;
+    gap: 1rem;
+}
+
+.report-filters {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.report-filters .form-group {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 200px;
+  flex-grow: 1;
+}
+
+.report-filters label {
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+  color: var(--dark-gray-color);
+  text-align: left;
+}
+
+.report-filters input, .report-filters select {
+  padding: 0.75rem;
+  border-radius: var(--border-radius);
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.form-group-full {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    margin-top: 1rem;
+}
+.form-group-full legend {
+    padding: 0 0.5rem;
+    margin-left: 0.5rem;
+    font-weight: 500;
+}
+.checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.5rem 1rem;
+    text-align: left;
+}
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.checkbox-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+}
+
+.history-item-photos {
+  display: flex;
+  gap: 5px;
+  margin-top: 0.5rem;
+}
+.history-item-photos img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.gps-indicator {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.report-list {
+    list-style: none;
+    padding: 0;
+}
+.report-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem;
+  border: 1px solid var(--medium-gray-color);
+  border-radius: var(--border-radius);
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+.report-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.report-item-info {
+  flex-grow: 1;
+}
+.report-item-info p {
+  margin: 0;
+}
+
+.report-summary {
+    background-color: var(--light-gray-color);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    margin-top: 1.5rem;
+    text-align: center;
+}
+.report-summary h3 {
+    margin-bottom: 0.5rem;
+}
+
+
+/*
+=========================================================
+NOVOS ESTILOS PARA O RELATÓRIO PDF
+=========================================================
+*/
+
+/* Esconde o container do relatório da tela principal */
+.printable-report-container {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 210mm; /* Largura A4 */
+  font-family: Arial, sans-serif;
+  color: black;
+  background: white;
+}
+
+/* Define uma página A4 */
+.printable-page {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 15mm;
+  page-break-after: always;
+  box-sizing: border-box;
+  position: relative; /* Para o rodapé */
+}
+
+.printable-page:last-child {
+  page-break-after: avoid;
+}
+
+/* Cabeçalho de cada página */
+.pdf-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 2px solid #333;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+.pdf-page-header h2 {
+  font-size: 16pt;
+  margin: 0;
+}
+.pdf-page-header p {
+  font-size: 10pt;
+  margin: 0;
+  text-align: right;
+}
+
+/* Rodapé de cada página */
+.pdf-page-footer {
+  position: absolute;
+  bottom: 10mm;
+  left: 15mm;
+  right: 15mm;
+  text-align: right;
+  font-size: 10pt;
+  border-top: 1px solid #ccc;
+  padding-top: 5px;
+}
+
+
+/* Bloco de cada registro de serviço */
+.pdf-record-block {
+  margin-bottom: 10mm;
+  page-break-inside: avoid; /* Tenta não quebrar este bloco entre páginas */
+}
+
+/* Informações do registro */
+.pdf-record-info {
+  background-color: #f0f0f0;
+  padding: 3mm;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  margin-bottom: 4mm;
+}
+.pdf-record-info h3 {
+  margin: 0 0 2mm 0;
+  font-size: 12pt;
+}
+.pdf-record-info p {
+  font-size: 9pt;
+  margin: 1mm 0;
+}
+
+/* Tabela de comparação de fotos */
+.pdf-photo-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 4mm;
+}
+
+.pdf-photo-table th {
+  font-size: 11pt;
+  padding-bottom: 2mm;
+  border-bottom: 1px solid #ccc;
+}
+
+.pdf-photo-table td {
+  width: 50%;
+  padding: 2mm;
+  vertical-align: top;
+  text-align: center;
+}
+
+.pdf-photo-table img {
+  width: 100%;
+  height: 60mm; /* Tamanho fixo, conforme solicitado */
+  object-fit: cover; /* Mantém a proporção e corta se necessário */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 1mm;
+}
+
+.pdf-photo-table .caption {
+  font-size: 8pt;
+  color: #555;
+  margin: 0;
+}
+
+
+/* Outros estilos novos... */
+
+.admin-dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+.admin-dashboard .button {
+    padding: 1.5rem 1rem;
+    font-size: 1.1rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 80px;
+}
+
+.city-selection-list, .location-selection-list, .service-selection-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.location-selection-list {
+    max-height: 250px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.contract-group-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+@media (min-width: 600px) {
+    .contract-group-selector {
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .contract-group-selector select {
+        flex-grow: 1;
+        min-width: 200px;
+    }
+    .contract-group-selector button {
+        flex-shrink: 0;
+        width: auto;
+        margin-top: 0;
+    }
+    .contract-group-actions {
+        display: flex;
+        gap: 0.5rem;
+        flex-shrink: 0;
+    }
+}
+
+
+/* Goal Management Styles */
+.progress-card {
+    padding: 1.5rem;
+}
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.progress-bar-container {
+    width: 100%;
+    background-color: var(--medium-gray-color);
+    border-radius: 10px;
+    margin: 0.5rem 0;
+    overflow: hidden;
+    height: 20px;
+}
+.progress-bar {
+    height: 100%;
+    background-color: var(--success-color);
+    border-radius: 10px;
+    transition: width 0.5s ease-in-out;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+.remaining-info {
+    text-align: center;
+    margin-top: 0.5rem;
+    font-style: italic;
+    color: var(--dark-gray-color);
+}
+
+/* Admin Edit Form Styles */
+.edit-form-container {
+    text-align: left;
+}
+.edit-form-container .form-group {
+    margin-bottom: 1rem;
+}
+.edit-form-container label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+}
+.edit-form-container input,
+.edit-form-container select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+}
+
+.edit-photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+}
+.edit-photo-item {
+  position: relative;
+}
+.edit-photo-item img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  border: 2px solid var(--medium-gray-color);
+}
+.delete-photo-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: rgba(220, 53, 69, 0.8);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  font-weight: bold;
+  line-height: 24px;
+  text-align: center;
+  padding: 0;
+  font-size: 14px;
+}
+
+/* Audit Log View Styles */
+.audit-log-list {
+    list-style: none;
+    padding: 0;
+}
+.audit-log-item {
+    background-color: var(--light-gray-color);
+    border: 1px solid var(--medium-gray-color);
+    border-left: 4px solid var(--admin-primary-color);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: var(--border-radius);
+    text-align: left;
+}
+.audit-log-item p {
+    margin: 0.25rem 0;
+    word-break: break-word;
+}
+.audit-log-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.audit-log-header h2 {
+    margin: 0;
+}
+
+/* Contract Management View Styles */
+.service-definition-item {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: var(--light-gray-color);
+    border-radius: var(--border-radius);
+    margin-bottom: 0.5rem;
+}
+.service-definition-item > span {
+    flex-grow: 1;
+    text-align: left;
+}
+.add-service-form {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.add-service-form > input {
+    flex-grow: 1;
+}
+/* Estilos para o campo de Observação do ADM */
+textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--medium-gray-color);
+    border-radius: var(--border-radius);
+    font-family: inherit;
+    font-size: 1rem;
+    margin-top: 1rem;
+    resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+/* Estilos para a lista de locais do Operador */
+.location-button-with-obs {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 1rem;
+    line-height: 1.4;
+}
+
+.location-name {
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.location-observation {
+    font-size: 0.85rem;
+    color: var(--dark-gray-color);
+    font-style: italic;
+    font-weight: 400;
+}
+
+/* User Assignment Styles */
+.assignment-section {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid var(--medium-gray-color);
+    border-radius: var(--border-radius);
+    text-align: left;
+    background-color: var(--light-gray-color);
+}
+.assignment-section legend {
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 0 0.5rem;
+    margin-left: -0.5rem;
+}
+
+.assignment-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+.assignment-item {
+    background-color: var(--white-color);
+    padding: 0.75rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    border: 1px solid var(--medium-gray-color);
+}
+.assignment-item-info p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--dark-gray-color);
+}
+.assignment-item-info strong {
+    font-size: 1rem;
+    color: var(--text-color);
+}
+.add-assignment-form {
+    background-color: var(--white-color);
+    padding: 1rem;
+    border: 1px dashed var(--dark-gray-color);
+    border-radius: var(--border-radius);
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.add-assignment-form h4 {
+    margin: 0 0 0.5rem 0;
+    text-align: left;
+}
+.add-assignment-form .button {
+    margin-top: 0.5rem;
+}
+
+
+/* Location Service Assignment Styles */
+.service-assignment-fieldset {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border: 1px solid var(--medium-gray-color);
+    border-radius: var(--border-radius);
+    text-align: left;
+}
+.service-assignment-fieldset legend {
+    font-weight: 500;
+    padding: 0 0.5rem;
+}
+.location-services-list {
+    font-size: 0.85rem;
+    color: var(--dark-gray-color);
+    font-style: italic;
+}
+
+/* Adicione ao final de index.css */
+
+.button.button-danger {
+    background-color: var(--danger-color);
+    color: var(--white-color);
+    margin-top: 1.5rem; /* Adiciona um espaço acima do botão */
+    width: 100%;
+}
+
+.button.button-danger:hover {
+    background-color: #c82333; /* Um vermelho mais escuro no hover */
+}
+
+/* =========================================================
+   CORREÇÃO GLOBAL DE BOTÕES E ALINHAMENTO
+   ========================================================= */
+
+/* 1️⃣ - Reajusta botões padrão */
+.button {
+  width: 100%;
+  max-width: 100%;
+  display: inline-block;
+}
+
+/* 2️⃣ - Quando estiverem em grupos, voltam a ser automáticos */
+.button-group,
+.contract-group-actions,
+.list-item-actions,
+.service-definition-item,
+.add-service-form,
+.assignment-item,
+.report-item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* 3️⃣ - Dentro desses grupos, os botões não ocupam 100% */
+.button-group .button,
+.contract-group-actions .button,
+.list-item-actions .button,
+.service-definition-item .button,
+.add-service-form .button,
+.assignment-item .button,
+.report-item .button {
+  width: auto;
+  flex: 0 0 auto;
+  min-width: 90px;
+  margin-top: 0;
+  white-space: nowrap;
+}
+
+/* 4️⃣ - Garante que botões principais (tipo únicos) fiquem 100% da largura */
+.card > .button,
+.dashboard-container > .button,
+.login-container > .button,
+.form-container > .button {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* 5️⃣ - Corrige margens e aparência visual */
+.button-sm {
+  width: auto !important;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  border-radius: 6px;
+}
+
+.button-danger,
+.button-secondary,
+.button-success,
+.button.admin-button {
+  width: auto;
+}
+
+/* 6️⃣ - Garante consistência entre pares de botões em listas */
+.list-item-actions {
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.list-item-actions .button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+/* 7️⃣ - Botão de sair continua com largura total e espaçamento */
+.header-logout-button,
+.button.button-danger.logout {
+  display: block;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
